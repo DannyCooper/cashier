@@ -42,8 +42,9 @@ class Cashier_Products_By_Cat_Widget extends WP_Widget {
 			$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : '';
 			$count = ( ! empty( $instance['count'] ) ) ? $instance['count'] : '4';
 			$category = ( ! empty( $instance['category'] ) ) ? $instance['category'] : '';
+			$link_text = ( ! empty( $instance['link_text'] ) ) ? $instance['link_text'] : '';
 
-			$category_link = get_category_link( $category );
+			$category_link = get_term_link( $category );
 
 			echo $args['before_widget']; // WPCS: XSS ok.
 
@@ -52,7 +53,7 @@ class Cashier_Products_By_Cat_Widget extends WP_Widget {
 				<?php if ( ! empty( $title ) ) : ?>
 					<div class="section-header">
 						<?php echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title']; // WPCS: XSS ok. ?>
-						<a class="section-link" href="<?php echo esc_url( $category_link ); ?>"><?php echo esc_html( $title ); ?></a>
+						<a class="section-link" href="<?php echo esc_url( $category_link ); ?>"><?php echo esc_html( $link_text ); ?></a>
 					</div>
 				<?php endif; ?>
 
@@ -63,6 +64,12 @@ class Cashier_Products_By_Cat_Widget extends WP_Widget {
 							'posts_per_page' => $count,
 							'post_status' => 'publish',
 							'post_type' => 'product',
+							'tax_query' => array(
+								array(
+									'taxonomy' => 'product_cat',
+									'terms' => $category,
+								),
+							),
 						);
 
 						$query = new WP_Query( $query_args );
@@ -94,6 +101,7 @@ class Cashier_Products_By_Cat_Widget extends WP_Widget {
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : '';
 		$count = ! empty( $instance['count'] ) ? $instance['count'] : '4';
 		$category = ! empty( $instance['category'] ) ? $instance['category'] : '';
+		$link_text = ! empty( $instance['link_text'] ) ? $instance['link_text'] : '';
 		?>
 
 		<p>
@@ -102,13 +110,22 @@ class Cashier_Products_By_Cat_Widget extends WP_Widget {
 		</p>
 
 		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'link_text' ) ); ?>"><?php esc_html_e( 'Link Text:', 'cashier' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'link_text' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'link_text' ) ); ?>" type="text" value="<?php echo esc_attr( $link_text ); ?>">
+		</p>
+
+		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>"><?php esc_html_e( 'Number of Products:', 'cashier' ); ?></label>
-			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'count' ) ); ?>" type="text" value="<?php echo esc_attr( $count ); ?>">
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'count' ) ); ?>" type="text" value="<?php echo absint( $count ); ?>">
 		</p>
 
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'category' ) ); ?>"><?php esc_html_e( 'Product Category:', 'cashier' ); ?></label>
-			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'category' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'category' ) ); ?>" type="text" value="<?php echo esc_attr( $category ); ?>">
+			<select id="<?php echo $this->get_field_id('category'); ?>" name="<?php echo $this->get_field_name('category'); ?>" class="widefat" style="width:100%;">
+	               <?php foreach ( get_terms( 'product_cat' ) as $term ) : ?>
+		               <option <?php selected( $instance['category'], $term->term_id ); ?> value="<?php echo absint( $term->term_id ); ?>"><?php echo esc_attr( $term->name ); ?></option>
+	               <?php endforeach; ?>
+	           </select>
 		</p>
 
 		<?php
@@ -127,8 +144,9 @@ class Cashier_Products_By_Cat_Widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? $new_instance['title'] : '';
-		$instance['count'] = ( ! empty( $new_instance['count'] ) ) ? $new_instance['count'] : '';
-		$instance['category'] = ( ! empty( $new_instance['category'] ) ) ? $new_instance['category'] : '';
+		$instance['count'] = ( ! empty( $new_instance['count'] ) ) ? absint( $new_instance['count'] ) : '';
+		$instance['category'] = ( ! empty( $new_instance['category'] ) ) ? absint( $new_instance['category'] ) : '';
+		$instance['link_text'] = ( ! empty( $new_instance['link_text'] ) ) ? $new_instance['link_text'] : '';
 
 		return $instance;
 	}

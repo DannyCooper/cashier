@@ -108,18 +108,18 @@ add_action( 'after_setup_theme', 'cashier_content_width', 0 );
  */
 function cashier_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'cashier' ),
-		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'cashier' ),
+		'name'          => esc_html__( 'Homepage Template', 'cashier' ),
+		'id'            => 'homepage-1',
+		'description'   => esc_html__( 'Add widgets here to build a homepage.', 'cashier' ),
 		'before_widget' => '<section class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	) );
 	register_sidebar( array(
-		'name'          => esc_html__( 'Homepage Template', 'cashier' ),
-		'id'            => 'homepage-1',
-		'description'   => esc_html__( 'Add widgets here to build a homepage.', 'cashier' ),
+		'name'          => esc_html__( 'Sidebar', 'cashier' ),
+		'id'            => 'sidebar-1',
+		'description'   => esc_html__( 'Add widgets here.', 'cashier' ),
 		'before_widget' => '<section class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h3 class="widget-title">',
