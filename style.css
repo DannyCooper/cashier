@@ -1,10 +1,10 @@
 /*
 Theme Name: Cashier
-Theme URI: https://dannycooper.com/cashier
+Theme URI: https://dannycooper.com/cashier-theme
 Author: DannyCooper
 Author URI: https://dannycooper.com/
-Description: @TODO
-Version: 1.0.0
+Description: Cashier is a lightweight WooCommerce theme built using core WordPress functions. It doesn't use any frameworks or libraries, this makes it fast, simple and easy to customize!
+Version: 0.1.0
 License: GNU General Public License v2 or later
 Text Domain: cashier
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -16,6 +16,10 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
+
+FontAwesome License: SIL Open Font License - http://scripts.sil.org/OFL
+Screenshot Product Images: © 2017 WooCommerce, GPLv2 or later
+Screenshot Hero Image: https://pixabay.com/en/actress-model-young-woman-fashion-2868705/ [CC0 Creative Commons] https://creativecommons.org/share-your-work/public-domain/cc0
 */
 
 /*--------------------------------------------------------------
@@ -536,7 +540,7 @@ textarea {
 --------------------------------------------------------------*/
 
 a {
-	color: #399ed5;
+	color: #31567f;
 }
 
 a:hover,
@@ -682,6 +686,7 @@ a:active {
 	list-style: none;
 	margin: 0;
 	padding-left: 0;
+	margin-right: -20px;
 }
 
 .h-menu li {
@@ -807,14 +812,14 @@ a:active {
 --------------------------------------------------------------*/
 
 .menu-2 {
-	background: #019ed4;
+	background: #31567f;
 	font-weight: 300;
 	margin-left: -20px;
 }
 
 .menu-2 a {
 	color: white;
-	padding: 20px 15px;
+	padding: 15px;
 	display: block;
 }
 
@@ -839,7 +844,7 @@ a:active {
 
 .menu-2 li.page_item_has_children > a:after,
 .menu-2 li.menu-item-has-children > a:after {
-	color: #caf1ff;
+	color: rgba(255, 255, 255, 0.5);
 }
 
 .menu-2 li li.page_item_has_children > a:after,
@@ -1347,7 +1352,6 @@ object {
 	float: left;
 	margin-right: 4%;
 	text-align: center;
-	margin-bottom: 25px
 }
 
 .products-by-cat .products ul li a {
@@ -1391,13 +1395,13 @@ object {
 	position: absolute;
 	z-index: 1;
 	width: 100%;
- 	text-align: center;
-	padding: 0 50px;
+  text-align: left;
+	padding: 0 75px;
 }
 .hero-section .section-header h3 {
 	color: white;
-	font-size: 50px;
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.23);
+	font-size: 25px;
+	font-weight: 700;
 }
 .hero-section  img {
 	vertical-align: bottom;
@@ -1583,21 +1587,20 @@ ul.products li.product {
 }
 
 .onsale {
-	background: #d40202;
-border-radius: 523px;
-height: 50px;
-width: 50px;
-display: block;
-padding: 16px 7px;
-color: white;
-font-weight: 500;
-text-transform: uppercase;
-position: absolute;
-z-index: 10;
-font-size: 12px;
-letter-spacing: .5px;
-left: 10px;
-top: 10px;
+	background: #31567f;
+	border-radius: 2px;
+	width: 50px;
+	display: block;
+	padding: 4px 4px;
+	color: white;
+	font-weight: 500;
+	text-transform: uppercase;
+	position: absolute;
+	z-index: 10;
+	font-size: 12px;
+	letter-spacing: .5px;
+	left: 10px;
+	top: 10px;
 }
 
 .variations {
@@ -1771,6 +1774,19 @@ form.woocommerce-checkout .form-row-last {
 			form.woocommerce-checkout label {
 				display: block
 			}
+
+.woocommerce-checkout-review-order {
+	width: 45%;
+float: right;
+padding: 25px;
+background: #f7f7f7;
+}
+
+#customer_details {
+	width: 49%;
+float: left;
+}
+
 			form.woocommerce-checkout .input-text,
 			form.woocommerce-checkout input[type="select"] {
 				    width: 100%;
@@ -1786,24 +1802,22 @@ form.woocommerce-checkout .form-row-last {
 				list-style: none;
 				padding: 0
 			}
+
+			form.woocommerce-checkout .wc_payment_method label {
+				color: black;
+				font-weight: 500;
+			}
 			form.woocommerce-checkout .wc_payment_methods label {
 				display: inline;
 				padding-left: 8px;
 			}
 			form.woocommerce-checkout .wc_payment_methods .payment_box {
-				display: block;
-				position: relative;
-				box-sizing: border-box;
-				padding: 1em;
-				margin: 1em 0;
-				border-radius: 2px;
-				background-color: #f9f9f9;
-				font-size: 14px
+		    margin: 1em 0;
+		    border-radius: 2px;
+		    font-size: 14px;
+		    border-bottom: 1px solid #ccc;
+			}
 
-			}
-			form.woocommerce-checkout .wc_payment_methods .payment_box p {
-				margin-bottom: 0
-			}
 			form.woocommerce-checkout .wc_payment_method img  {
 				height: 50px;
 				margin: -2px 14px 0 12px;
@@ -1842,11 +1856,6 @@ form.woocommerce-cart-form thead tr {
 	    border-bottom: 2px solid;
 }
 
-form.woocommerce-checkout #payment {
-	width: 50%;
-	float: right;
-}
-
 
 .woocommerce-product-gallery ol {
 	list-style: none;
@@ -1880,7 +1889,6 @@ td.value {
     width: 4.9em;
     font-family: FontAwesome;
     font-weight: 400;
-	color: #303135
 }
 
 .star-rating:before {
@@ -1955,7 +1963,7 @@ td.value {
 .comment_container:before,
 .comment_container:after {
 	content: "";
-	display: table;
+display: table;
 }
 
 .comment_container:after {
@@ -2011,9 +2019,9 @@ p.stars.selected a.active:before {
 
 p.stars.selected a:not(.active):before {
     opacity: 1;
-}
+	}
 
-p.stars.selected a.active~a:before {
+	p.stars.selected a.active~a:before {
     opacity: .25;
 }
 
@@ -2061,4 +2069,14 @@ p.stars.selected a.active~a:before {
 
 .product-name {
 	text-align: left;
+}
+
+.product ins {
+	background: none
+}
+.product del {
+	    color: #ccc;
+}
+.product del .woocommerce-Price-amount {
+	    color: #ccc;
 }

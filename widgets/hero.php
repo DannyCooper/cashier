@@ -17,7 +17,7 @@ class Cashier_Hero_Widget extends WP_Widget {
 	 */
 	public function __construct() {
 
-		add_action('admin_enqueue_scripts', array($this, 'enqueue'));
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 
 		$id_base = 'cashier_hero';
 		$name = esc_html__( 'Hero Section', 'cashier' );
@@ -32,7 +32,7 @@ class Cashier_Hero_Widget extends WP_Widget {
 	}
 
 	/**
-	 * @TODO
+	 * Enqueue the scripts and styles needed for the image uploader.
 	 */
 	public function enqueue() {
 		wp_enqueue_style( 'thickbox' );
@@ -58,8 +58,6 @@ class Cashier_Hero_Widget extends WP_Widget {
 			echo $args['before_widget']; // WPCS: XSS ok.
 
 			?>
-
-
 
 			<?php if ( ! empty( $url ) ) : ?>
 				<a href="<?php echo esc_url( $url ); ?>">	<div class="container">
@@ -104,10 +102,10 @@ class Cashier_Hero_Widget extends WP_Widget {
 		</p>
 
 		<p>
-	        <label for="<?php echo $this->get_field_id( 'image_url' ); ?>"><?php esc_html_e( 'Image:' ); ?></label>
-	        <input class="widefat" id="<?php echo $this->get_field_id( 'image_url' ); ?>" name="<?php echo $this->get_field_name( 'image_url' ); ?>" type="text" value="<?php echo esc_url( $image_url ); ?>" />
-	        <button class="upload_image_button button button-primary"><?php esc_attr_e( 'Upload Image', 'cashier' ); ?></button>
-	     </p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'image_url' ) ); ?>"><?php esc_html_e( 'Image:', 'cashier' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'image_url' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'image_url' ) ); ?>" type="text" value="<?php echo esc_url( $image_url ); ?>" />
+			<button class="upload_image_button button button-primary"><?php esc_attr_e( 'Upload Image', 'cashier' ); ?></button>
+		</p>
 
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'url' ) ); ?>"><?php esc_html_e( 'URL:', 'cashier' ); ?></label>

@@ -44,7 +44,7 @@ class Cashier_Products_By_Cat_Widget extends WP_Widget {
 			$category = ( ! empty( $instance['category'] ) ) ? $instance['category'] : '';
 			$link_text = ( ! empty( $instance['link_text'] ) ) ? $instance['link_text'] : '';
 
-			$category_link = get_term_link( $category );
+			$category_link = ( ! is_wp_error( get_term_link( $category ) ) ? get_term_link( $category ) : 1 );
 
 			echo $args['before_widget']; // WPCS: XSS ok.
 
@@ -121,11 +121,11 @@ class Cashier_Products_By_Cat_Widget extends WP_Widget {
 
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'category' ) ); ?>"><?php esc_html_e( 'Product Category:', 'cashier' ); ?></label>
-			<select id="<?php echo $this->get_field_id('category'); ?>" name="<?php echo $this->get_field_name('category'); ?>" class="widefat" style="width:100%;">
-	               <?php foreach ( get_terms( 'product_cat' ) as $term ) : ?>
-		               <option <?php selected( $instance['category'], $term->term_id ); ?> value="<?php echo absint( $term->term_id ); ?>"><?php echo esc_attr( $term->name ); ?></option>
-	               <?php endforeach; ?>
-	           </select>
+			<select id="<?php echo esc_attr( $this->get_field_id( 'category' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'category' ) ); ?>" class="widefat" style="width:100%;">
+				<?php foreach ( get_terms( 'product_cat' ) as $term ) : ?>
+					<option <?php selected( $instance['category'], $term->term_id ); ?> value="<?php echo absint( $term->term_id ); ?>"><?php echo esc_attr( $term->name ); ?></option>
+				<?php endforeach; ?>
+			</select>
 		</p>
 
 		<?php

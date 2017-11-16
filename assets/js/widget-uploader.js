@@ -1,9 +1,16 @@
+/**
+ * Add image upload functionality to Cashier widgets.
+ *
+ * @package    cashier
+ * @copyright  Copyright (c) 2017, Danny Cooper
+ * @license    http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ */
+
 jQuery(document).ready(function ($) {
 
    $(document).on("click", ".upload_image_button", function (e) {
       e.preventDefault();
       var $button = $(this);
-
 
       // Create the media frame.
       var file_frame = wp.media.frames.file_frame = wp.media({
@@ -20,7 +27,6 @@ jQuery(document).ready(function ($) {
       // When an image is selected, run a callback.
       file_frame.on('select', function () {
          // We set multiple to false so only get one image from the uploader
-
          var attachment = file_frame.state().get('selection').first().toJSON();
 
          $button.siblings('input').val(attachment.url);
