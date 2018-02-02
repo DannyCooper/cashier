@@ -3,7 +3,7 @@
  * Custom template tags for this theme
  *
  * @package    cashier
- * @copyright  Copyright (c) 2017, Danny Cooper
+ * @copyright  Copyright (c) 2018, Danny Cooper
  * @license    http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 

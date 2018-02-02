@@ -7,7 +7,7 @@
  * @link       https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package    cashier
- * @copyright  Copyright (c) 2017, Danny Cooper
+ * @copyright  Copyright (c) 2018, Danny Cooper
  * @license    http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
@@ -23,7 +23,7 @@
 				<?php
 				// translators: %1$s: theme name.
 				// translators: %2$s: theme author.
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'cashier' ), '<a href="https://olympusthemes.com/cashier-theme/">Cashier</a>', 'Danny Cooper' );
+				printf( esc_html__( 'Theme: %1$s by %2$s.', 'cashier' ), '<a href="https://olympusthemes.com/themes/cashier/">Cashier</a>', 'Danny Cooper' );
 				?>
 
 			</div><!-- .site-info -->

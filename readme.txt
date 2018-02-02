@@ -5,13 +5,13 @@ Tags: one-column, two-columns, right-sidebar, custom-background, custom-header, 
 
 Requires at least: 4.0
 Tested up to: 4.9
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 A WooCommerce theme called Cashier.
 
-Cashier WordPress Theme, Copyright 2017 Danny Cooper
+Cashier WordPress Theme, Copyright 2018 Danny Cooper
 Cashier is distributed under the terms of the GNU GPL
 
 == Description ==
@@ -36,9 +36,14 @@ Cashier includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.0.1 - February 2 2018 =
+* Move credits to readme.txt
 = 1.0.0 - January 21 2018 =
 * Initial release
 
 == Credits ==
 
-* normalize.css http://necolas.github.io/normalize.css/, (C) 2012-2016 Nicolas Gallagher and Jonathan Neal, [MIT](http://opensource.org/licenses/MIT)
+normalize.css License: © Nicolas Gallagher and Jonathan Neal, MIT - http://opensource.org/licenses/MIT
+FontAwesome License: SIL Open Font License - http://scripts.sil.org/OFL
+Screenshot Product Images: © 2018 WooCommerce, GPLv2 or later
+Screenshot Hero Image: https://pixabay.com/en/actress-model-young-woman-fashion-2868705/ [CC0 Creative Commons] https://creativecommons.org/share-your-work/public-domain/cc0

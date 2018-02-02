@@ -5,7 +5,7 @@
  * @link https://docs.woocommerce.com/document/third-party-custom-theme-compatibility
  *
  * @package     cashier
- * @copyright   Copyright (c) 2017, Danny Cooper
+ * @copyright   Copyright (c) 2018, Danny Cooper
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
