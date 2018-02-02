@@ -8,7 +8,7 @@
  * @license    http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+if ( ! is_active_sidebar( 'homepage-1' ) ) {
 	return;
 }
 
