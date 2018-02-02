@@ -18,10 +18,11 @@ class Cashier_Products_By_Cat_Widget extends WP_Widget {
 	public function __construct() {
 
 		$id_base = 'cashier_products_by_cat';
-		$name = esc_html__( 'Products by Category', 'cashier' );
+		$name    = esc_html__( 'Products by Category', 'cashier' );
+
 		$widget_options = array(
-			'classname' => 'products-by-cat',
-			'description' => esc_html__( 'Display products from a single category.', 'cashier' ),
+			'classname'                   => 'products-by-cat',
+			'description'                 => esc_html__( 'Display products from a single category.', 'cashier' ),
 			'customize_selective_refresh' => true,
 		);
 
@@ -39,9 +40,9 @@ class Cashier_Products_By_Cat_Widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-			$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : '';
-			$count = ( ! empty( $instance['count'] ) ) ? $instance['count'] : '4';
-			$category = ( ! empty( $instance['category'] ) ) ? $instance['category'] : '';
+			$title     = ( ! empty( $instance['title'] ) ) ? $instance['title'] : '';
+			$count     = ( ! empty( $instance['count'] ) ) ? $instance['count'] : '4';
+			$category  = ( ! empty( $instance['category'] ) ) ? $instance['category'] : '';
 			$link_text = ( ! empty( $instance['link_text'] ) ) ? $instance['link_text'] : '';
 
 			$category_link = ( ! is_wp_error( get_term_link( $category ) ) ? get_term_link( $category ) : 1 );
@@ -62,12 +63,12 @@ class Cashier_Products_By_Cat_Widget extends WP_Widget {
 						<?php
 						$query_args = array(
 							'posts_per_page' => $count,
-							'post_status' => 'publish',
-							'post_type' => 'product',
-							'tax_query' => array(
+							'post_status'    => 'publish',
+							'post_type'      => 'product',
+							'tax_query'      => array(
 								array(
 									'taxonomy' => 'product_cat',
-									'terms' => $category,
+									'terms'    => $category,
 								),
 							),
 						);
@@ -98,9 +99,9 @@ class Cashier_Products_By_Cat_Widget extends WP_Widget {
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : '';
-		$count = ! empty( $instance['count'] ) ? $instance['count'] : '4';
-		$category = ! empty( $instance['category'] ) ? $instance['category'] : '';
+		$title     = ! empty( $instance['title'] ) ? $instance['title'] : '';
+		$count     = ! empty( $instance['count'] ) ? $instance['count'] : '4';
+		$category  = ! empty( $instance['category'] ) ? $instance['category'] : '';
 		$link_text = ! empty( $instance['link_text'] ) ? $instance['link_text'] : '';
 		?>
 
@@ -142,10 +143,10 @@ class Cashier_Products_By_Cat_Widget extends WP_Widget {
 	 * @return array Updated safe values to be saved.
 	 */
 	public function update( $new_instance, $old_instance ) {
-		$instance = array();
-		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? $new_instance['title'] : '';
-		$instance['count'] = ( ! empty( $new_instance['count'] ) ) ? absint( $new_instance['count'] ) : '';
-		$instance['category'] = ( ! empty( $new_instance['category'] ) ) ? absint( $new_instance['category'] ) : '';
+		$instance              = array();
+		$instance['title']     = ( ! empty( $new_instance['title'] ) ) ? $new_instance['title'] : '';
+		$instance['count']     = ( ! empty( $new_instance['count'] ) ) ? absint( $new_instance['count'] ) : '';
+		$instance['category']  = ( ! empty( $new_instance['category'] ) ) ? absint( $new_instance['category'] ) : '';
 		$instance['link_text'] = ( ! empty( $new_instance['link_text'] ) ) ? $new_instance['link_text'] : '';
 
 		return $instance;

@@ -20,10 +20,11 @@ class Cashier_Hero_Widget extends WP_Widget {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 
 		$id_base = 'cashier_hero';
-		$name = esc_html__( 'Hero Section', 'cashier' );
+		$name    = esc_html__( 'Hero Section', 'cashier' );
+
 		$widget_options = array(
-			'classname' => 'hero-section',
-			'description' => esc_html__( 'Display a hero section.', 'cashier' ),
+			'classname'                   => 'hero-section',
+			'description'                 => esc_html__( 'Display a hero section.', 'cashier' ),
 			'customize_selective_refresh' => true,
 		);
 
@@ -51,9 +52,9 @@ class Cashier_Hero_Widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-			$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : '';
+			$title     = ( ! empty( $instance['title'] ) ) ? $instance['title'] : '';
 			$image_url = ( ! empty( $instance['image_url'] ) ) ? $instance['image_url'] : '';
-			$url = ( ! empty( $instance['url'] ) ) ? $instance['url'] : '';
+			$url       = ( ! empty( $instance['url'] ) ) ? $instance['url'] : '';
 
 			echo $args['before_widget']; // WPCS: XSS ok.
 
@@ -91,20 +92,26 @@ class Cashier_Hero_Widget extends WP_Widget {
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : '';
+		$title     = ! empty( $instance['title'] ) ? $instance['title'] : '';
 		$image_url = ! empty( $instance['image_url'] ) ? $instance['image_url'] : '';
-		$url = ! empty( $instance['url'] ) ? $instance['url'] : '';
+		$url       = ! empty( $instance['url'] ) ? $instance['url'] : '';
 		?>
 
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'cashier' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
+				<?php esc_html_e( 'Title:', 'cashier' ); ?>
+			</label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
 
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'image_url' ) ); ?>"><?php esc_html_e( 'Image:', 'cashier' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'image_url' ) ); ?>">
+				<?php esc_html_e( 'Image:', 'cashier' ); ?>
+			</label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'image_url' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'image_url' ) ); ?>" type="text" value="<?php echo esc_url( $image_url ); ?>" />
-			<button class="upload_image_button button button-primary"><?php esc_attr_e( 'Upload Image', 'cashier' ); ?></button>
+			<button class="upload_image_button button button-primary">
+				<?php esc_attr_e( 'Upload Image', 'cashier' ); ?>
+			</button>
 		</p>
 
 		<p>
@@ -126,10 +133,10 @@ class Cashier_Hero_Widget extends WP_Widget {
 	 * @return array Updated safe values to be saved.
 	 */
 	public function update( $new_instance, $old_instance ) {
-		$instance = array();
-		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? $new_instance['title'] : '';
+		$instance              = array();
+		$instance['title']     = ( ! empty( $new_instance['title'] ) ) ? $new_instance['title'] : '';
 		$instance['image_url'] = ( ! empty( $new_instance['image_url'] ) ) ? esc_url_raw( $new_instance['image_url'] ) : '';
-		$instance['url'] = ( ! empty( $new_instance['url'] ) ) ? esc_url_raw( $new_instance['url'] ) : '';
+		$instance['url']       = ( ! empty( $new_instance['url'] ) ) ? esc_url_raw( $new_instance['url'] ) : '';
 
 		return $instance;
 	}

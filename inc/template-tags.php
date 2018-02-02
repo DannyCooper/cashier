@@ -98,8 +98,8 @@ if ( ! function_exists( 'cashier_the_post_navigation' ) ) :
 	 */
 	function cashier_the_post_navigation() {
 		$args = array(
-			'prev_text'                  => __( 'Previous Post: <span>%title</span>', 'cashier' ),
-			'next_text'                  => __( 'Next Post: <span>%title</span>', 'cashier' ),
+			'prev_text' => __( 'Previous Post: <span>%title</span>', 'cashier' ),
+			'next_text' => __( 'Next Post: <span>%title</span>', 'cashier' ),
 		);
 
 		the_post_navigation( $args );
@@ -125,13 +125,15 @@ endif;
 if ( ! function_exists( 'cashier_thumbnail' ) ) :
 	/**
 	 * Output the thumbnail if it exists.
+	 *
+	 * @param string $size Thunbnail size to output.
 	 */
-	function cashier_thumbnail() {
+	function cashier_thumbnail( $size = '' ) {
 
 		if ( has_post_thumbnail() ) { ?>
 			<div class="post-thumbnail">
 				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-					<?php the_post_thumbnail(); ?>
+					<?php the_post_thumbnail( $size ); ?>
 				</a>
 			</div><!-- .post-thumbnail -->
 		<?php

@@ -51,13 +51,21 @@ add_filter( 'woocommerce_add_to_cart_fragments', 'cashier_cart_link' );
 // Remove WooCommerce stylesheets.
 add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 
+/**
+ * Closing div tag around the WooCommerce product sorting.
+ */
 function cashier_sorting_container_start() {
 	echo '<div class="cashier-sorting clear">';
 }
+add_action( 'woocommerce_before_shop_loop', 'cashier_sorting_container_start', 19 );
+
+/**
+ * Opening div tag around the WooCommerce product sorting.
+ */
 function cashier_sorting_container_end() {
 	echo '</div>';
 }
-
-add_action( 'woocommerce_before_shop_loop', 'cashier_sorting_container_start', 19 );
 add_action( 'woocommerce_before_shop_loop', 'cashier_sorting_container_end', 31 );
+
+// Remove the add to cart button.
 remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );

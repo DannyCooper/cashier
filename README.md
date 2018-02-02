@@ -1,2 +1,0 @@
-# cashier
-Minimal WooCommerce Theme

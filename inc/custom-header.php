@@ -19,12 +19,12 @@
  */
 function cashier_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'cashier_custom_header_args', array(
-		'default-image'          => '',
-		'default-text-color'     => '000000',
-		'width'                  => 1000,
-		'height'                 => 250,
-		'flex-height'            => true,
-		'wp-head-callback'       => 'cashier_header_style',
+		'default-image'      => '',
+		'default-text-color' => '000000',
+		'width'              => 1000,
+		'height'             => 250,
+		'flex-height'        => true,
+		'wp-head-callback'   => 'cashier_header_style',
 	) ) );
 }
 add_action( 'after_setup_theme', 'cashier_custom_header_setup' );
@@ -60,10 +60,12 @@ if ( ! function_exists( 'cashier_header_style' ) ) :
 		}
 	<?php endif; ?>
 
-	.site-header {
-		background: url( <?php header_image(); ?> ) no-repeat;
-		background-size: cover;
-	}
+	<?php if ( has_header_image() ) : ?>
+		.site-header {
+			background: url( <?php header_image(); ?> ) no-repeat;
+			background-size: cover;
+		}
+	<?php endif; ?>
 
 	</style>
 	<?php

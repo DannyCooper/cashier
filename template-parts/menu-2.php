@@ -18,7 +18,7 @@
 		<?php
 		wp_nav_menu( array(
 			'theme_location' => 'menu-2',
-			'menu_id' => 'above-header-menu',
+			'menu_id'        => 'above-header-menu',
 		) );
 		?>
 	</div><!-- .wrapper -->
