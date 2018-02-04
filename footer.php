@@ -23,7 +23,7 @@
 				<?php
 				// translators: %1$s: theme name.
 				// translators: %2$s: theme author.
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'cashier' ), '<a href="https://olympusthemes.com/themes/cashier/">Cashier</a>', 'Danny Cooper' );
+				printf( esc_html__( 'Theme: %1$s by %2$s.', 'cashier' ), 'Cashier', '<a href="https://olympusthemes.com/">OlympusThemes</a>' );
 				?>
 
 			</div><!-- .site-info -->

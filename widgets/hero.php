@@ -53,6 +53,8 @@ class Cashier_Hero_Widget extends WP_Widget {
 	public function widget( $args, $instance ) {
 
 			$title     = ( ! empty( $instance['title'] ) ) ? $instance['title'] : '';
+			/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
+			$title     = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 			$image_url = ( ! empty( $instance['image_url'] ) ) ? $instance['image_url'] : '';
 			$url       = ( ! empty( $instance['url'] ) ) ? $instance['url'] : '';
 
@@ -70,7 +72,7 @@ class Cashier_Hero_Widget extends WP_Widget {
 
 				<?php if ( ! empty( $title ) ) : ?>
 					<div class="section-header">
-						<?php echo $args['before_title'] . apply_filters( 'widget_title', $title ) . $args['after_title']; // WPCS: XSS ok. ?>
+						<?php echo $args['before_title'] . $title . $args['after_title']; // WPCS: XSS ok. ?>
 					</div>
 				<?php endif; ?>
 
@@ -134,7 +136,7 @@ class Cashier_Hero_Widget extends WP_Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance              = array();
-		$instance['title']     = ( ! empty( $new_instance['title'] ) ) ? $new_instance['title'] : '';
+		$instance['title']     = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
 		$instance['image_url'] = ( ! empty( $new_instance['image_url'] ) ) ? esc_url_raw( $new_instance['image_url'] ) : '';
 		$instance['url']       = ( ! empty( $new_instance['url'] ) ) ? esc_url_raw( $new_instance['url'] ) : '';
 

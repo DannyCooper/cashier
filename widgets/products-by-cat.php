@@ -41,6 +41,8 @@ class Cashier_Products_By_Cat_Widget extends WP_Widget {
 	public function widget( $args, $instance ) {
 
 			$title     = ( ! empty( $instance['title'] ) ) ? $instance['title'] : '';
+			/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
+			$title     = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 			$count     = ( ! empty( $instance['count'] ) ) ? $instance['count'] : '4';
 			$category  = ( ! empty( $instance['category'] ) ) ? $instance['category'] : '';
 			$link_text = ( ! empty( $instance['link_text'] ) ) ? $instance['link_text'] : '';
@@ -53,7 +55,7 @@ class Cashier_Products_By_Cat_Widget extends WP_Widget {
 
 				<?php if ( ! empty( $title ) ) : ?>
 					<div class="section-header">
-						<?php echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title']; // WPCS: XSS ok. ?>
+						<?php echo $args['before_title'] . $title . $args['after_title']; // WPCS: XSS ok. ?>
 						<a class="section-link" href="<?php echo esc_url( $category_link ); ?>"><?php echo esc_html( $link_text ); ?></a>
 					</div>
 				<?php endif; ?>
@@ -144,10 +146,10 @@ class Cashier_Products_By_Cat_Widget extends WP_Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance              = array();
-		$instance['title']     = ( ! empty( $new_instance['title'] ) ) ? $new_instance['title'] : '';
+		$instance['title']     = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
 		$instance['count']     = ( ! empty( $new_instance['count'] ) ) ? absint( $new_instance['count'] ) : '';
 		$instance['category']  = ( ! empty( $new_instance['category'] ) ) ? absint( $new_instance['category'] ) : '';
-		$instance['link_text'] = ( ! empty( $new_instance['link_text'] ) ) ? $new_instance['link_text'] : '';
+		$instance['link_text'] = ( ! empty( $new_instance['link_text'] ) ) ? sanitize_text_field( $new_instance['link_text'] ) : '';
 
 		return $instance;
 	}

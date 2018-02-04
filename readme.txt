@@ -36,6 +36,8 @@ Cashier includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.0.2 - February 4 2018 =
+* Improve sanitization in widgets
 = 1.0.1 - February 2 2018 =
 * Move credits to readme.txt
 = 1.0.0 - January 21 2018 =
