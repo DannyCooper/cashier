@@ -10,8 +10,9 @@
 ?>
 
 <nav id="site-navigation" class="menu-1 h-menu" role="navigation">
-		<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-			<?php esc_html_e( 'Site Navigation', 'cashier' ); ?>
+		<button class="menu-toggle" aria-controls="site-menu" aria-expanded="false">
+			<i class="fa fa-bars" aria-hidden="true"></i>
+			<?php esc_html_e( 'Primary Navigation', 'cashier' ); ?>
 		</button>
 
 		<?php

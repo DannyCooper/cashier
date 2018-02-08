@@ -2,9 +2,9 @@
 Theme Name: Cashier
 Theme URI: https://dannycooper.com/cashier-theme
 Author: DannyCooper
-Author URI: https://dannycooper.com/
-Description: Cashier is a lightweight WooCommerce theme built using core WordPress functions. It doesn't use any frameworks or libraries, this makes it fast, simple and easy to customize!
-Version: 1.0.2
+Author URI: https://olympusthemes.com/
+Description: Cashier is a lightweight WooCommerce theme built using core WordPress functions. It doesn't use any frameworks or libraries, this makes it fast, simple and easy to customize! Cashier can be used as-is, or it can be used as a WooCommerce Starter Theme to build something greater. The theme is responsive, retina optimized, SEO friendly, and child theme friendly.
+Version: 1.0.3
 License: GNU General Public License v2 or later
 Text Domain: cashier
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -14,8 +14,6 @@ GitHub Theme URI: https://github.com/DannyCooper/cashier
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 
-Normalizing styles have been helped along thanks to the fine work of
-Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 */
 
 /*--------------------------------------------------------------
@@ -709,6 +707,7 @@ a:active {
 	float: left;
 	background: #eaeaea;
 	box-shadow: 2px 2px 1px rgba(0, 0, 0, .2);
+	text-align: left
 }
 
 .h-menu ul ul li:hover {
@@ -717,7 +716,6 @@ a:active {
 
 .h-menu ul ul a {
 	width: 200px;
-	text-align: left;
 	color: #5f5f5f;
 	border-top: 1px solid #dedbdb;
 	border-right: 1px solid #dedbdb;
@@ -1227,89 +1225,8 @@ object {
 }
 
 /*--------------------------------------------------------------
-# Responsive
+# WooCommerce
 --------------------------------------------------------------*/
-
-@media screen and (max-width: 600px) {
-	#site-menu {
-		display: none;
-	}
-
-	.menu-1 {
-		background: none;
-	}
-
-	.menu-1 a {
-		border-top: 1px solid #2c468a;
-	}
-
-	.menu-toggle {
-		width: 100%;
-		margin: 0 auto;
-		color: white;
-		border: 0;
-		border-radius: 0;
-		background-color: #253e80;
-	}
-
-	.toggled .menu-toggle {
-		margin: 0 auto;
-		color: white;
-		background-color: #132658;
-	}
-
-	/* Small menu. */
-	.menu-toggle,
-	.menu-1.toggled #site-menu {
-		display: block;
-		background-color: #253e80;
-	}
-
-	.menu-1 li {
-		float: none;
-		width: 100%;
-	}
-
-	.menu-1 ul ul {
-		position: relative;
-		left: auto;
-		display: none;
-		float: none;
-	}
-
-	.menu-1 ul li:hover > ul,
-	.menu-1 ul li.focus > ul {
-		display: block;
-	}
-
-	.menu-1 ul ul a {
-		width: 100%;
-	}
-
-	.menu-1 ul ul ul {
-		left: auto;
-	}
-
-	.menu-1 ul ul li:hover > ul,
-	.menu-1 ul ul li.focus > ul {
-		left: auto;
-	}
-}
-
-@media screen and (max-width: 1040px) {
-	.site-content,
-	.content-area,
-	.sidebar-1 {
-		float: none;
-		width: 100%;
-	}
-
-	.site-content,
-	.site-info {
-		padding: 0 20px;
-	}
-}
-
 
 .woocommerce-page .site-content {
 	margin-bottom: 50px;
@@ -1337,13 +1254,6 @@ object {
 
 .products-by-cat {
 	margin-bottom: 50px;
-}
-
-.products-by-cat .products ul li {
-	float: left;
-	width: 22%;
-	margin-right: 4%;
-	text-align: center;
 }
 
 .products-by-cat .products ul li a {
@@ -1491,11 +1401,16 @@ object {
 	margin-right: 0;
 }
 
-ul.products li.product {
+.products li.product {
 	float: left;
 	width: 22%;
 	margin-right: 4%;
 	margin-bottom: 25px;
+}
+
+
+.products li.product:nth-child(4n+1) {
+	clear: left
 }
 
 .products {
@@ -2102,4 +2017,188 @@ p.stars.selected a.active ~ a:before {
 
 .product del .woocommerce-Price-amount {
 	color: #ccc;
+}
+
+/*--------------------------------------------------------------
+# Responsive
+--------------------------------------------------------------*/
+
+@media screen and (max-width: 1040px) {
+	.site-content,
+	.content-area,
+	.sidebar-1 {
+		float: none;
+		width: 100%;
+	}
+
+	.menu-2,
+	.site-header,
+	.site-content,
+	.site-info,
+	.site-footer {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+
+	.products li.product {
+    width: 47.5%;
+    margin-right: 5%;
+		margin-bottom: 25px
+	}
+
+
+	.products li.product:nth-child(even) {
+		margin-right: 0
+	}
+
+	.products li.product:nth-child(odd) {
+		clear: left
+	}
+
+	#customer_details,
+	.woocommerce-checkout-review-order {
+    float: none;
+    width: 100%;
+	}
+
+	.cart_totals {
+		float: none;
+    width: 100%;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	#site-menu,
+	#above-header-menu {
+		display: none;
+		margin-right: 0;
+	}
+
+	.site-branding {
+		width: 100%;
+		float: none;
+		text-align: center;
+		margin-bottom: 25px;
+	}
+
+	.menu-1 {
+		background: none;
+		float: none;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.menu-1 a {
+		border-top: 1px solid #dadada;
+		rgba(255, 255, 255, 0.8);
+
+	}
+
+	.menu-2 {
+		margin-left: 0
+	}
+
+	.menu-2 {
+		margin-left: 0
+	}
+
+	.menu-toggle {
+		width: 100%;
+		margin: 0 auto;
+		color: white;
+		border: 0;
+		border-radius: 0;
+	}
+
+	.menu-1 .menu-toggle {
+		background-color: #253e80;
+	}
+
+	.toggled .menu-toggle {
+		margin: 0 auto;
+		color: white;
+		background-color: #008cbd;
+	}
+
+	.menu-2 .toggled .menu-toggle {
+		background-color: #23466d;
+	}
+
+	/* Small menu. */
+	.menu-toggle {
+		background-color: #2a4d75;
+		display: block;
+	}
+	/* Small menu. */
+	.menu-2 .menu-toggle {
+		background-color: #203e63;
+		display: block;
+	}
+	.menu-1.toggled #site-menu {
+		display: block;
+    background-color: #eaeaea;
+	}
+	.menu-2.toggled #above-header-menu {
+		display: block;
+    background-color: #2a4d75;
+	}
+
+	.menu-1 li,
+	.menu-2 li {
+		float: none;
+		width: 100%;
+	}
+	.menu-1 li:hover {
+		background-color: #dadada
+	}
+
+	.menu-1 ul ul,
+	.menu-2 ul ul {
+		position: relative;
+		left: auto;
+		display: none;
+		float: none;
+		margin-right: 0;
+		box-shadow: none;
+		background-color: #f1f1f1
+	}
+
+	.menu-1 ul li:hover > ul,
+	.menu-1 ul li.focus > ul,
+	.menu-2 ul li:hover > ul,
+	.menu-2 ul li.focus > ul {
+		display: block;
+	}
+
+	.menu-1 ul ul a,
+	.menu-2 ul ul a {
+		width: 100%;
+	}
+
+	.menu-1 ul ul ul,
+	.menu-2 ul ul ul {
+		left: auto;
+	}
+
+	.menu-1 ul ul li:hover > ul,
+	.menu-1 ul ul li.focus > ul,
+	.menu-2 ul ul li:hover > ul,
+	.menu-2 ul ul li.focus > ul {
+		left: auto;
+	}
+
+	.single-product .product .woocommerce-product-gallery {
+    width: 100%;
+    margin-bottom: 25px;
+    float: none;
+	}
+
+	.single-product .product .summary,
+	.woocommerce-tabs .panel,
+	.woocommerce-tabs .tabs {
+    float: none;
+    width: 100%;
+	}
+
 }

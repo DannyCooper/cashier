@@ -12,7 +12,8 @@
 <nav id="above-header-navigation" class="menu-2 h-menu" role="navigation">
 	<div class="wrapper">
 		<button class="menu-toggle" aria-controls="above-header-menu" aria-expanded="false">
-			<?php esc_html_e( 'Header Navigation', 'cashier' ); ?>
+			<i class="fa fa-bars" aria-hidden="true"></i>
+			<?php esc_html_e( 'Secondary Navigation', 'cashier' ); ?>
 		</button>
 
 		<?php

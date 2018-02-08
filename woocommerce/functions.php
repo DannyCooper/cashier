@@ -69,3 +69,13 @@ add_action( 'woocommerce_before_shop_loop', 'cashier_sorting_container_end', 31 
 
 // Remove the add to cart button.
 remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+
+if ( ! function_exists( 'loop_columns' ) ) :
+	/**
+	 * Change number or products per row to 3.
+	 */
+	function loop_columns() {
+		return 4; // 3 products per row
+	}
+endif;
+add_filter( 'loop_shop_columns', 'loop_columns' );

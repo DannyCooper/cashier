@@ -5,7 +5,7 @@ Tags: one-column, two-columns, right-sidebar, custom-background, custom-header, 
 
 Requires at least: 4.0
 Tested up to: 4.9
-Stable tag: 1.0.1
+Stable tag: 1.0.3
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,9 @@ Cashier includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.0.3 - February 8 2018 =
+* Improve responsive design
+* Remove 'Blog' title from blog page
 = 1.0.2 - February 4 2018 =
 * Improve sanitization in widgets
 = 1.0.1 - February 2 2018 =
