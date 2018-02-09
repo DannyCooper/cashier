@@ -64,8 +64,8 @@ if ( ! function_exists( 'cashier_setup' ) ) :
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
-		// Add image size for blog posts, 600px wide (and unlimited height).
-		add_image_size( 'cashier-blog', 4 );
+		// Add image size for blog posts, 640px wide (and unlimited height).
+		add_image_size( 'cashier-blog', 640 );
 
 		// Add stylesheet for the WordPress editor.
 		add_editor_style( '/assets/css/editor-style.css' );
