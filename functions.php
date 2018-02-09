@@ -65,7 +65,7 @@ if ( ! function_exists( 'cashier_setup' ) ) :
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
 		// Add image size for blog posts, 600px wide (and unlimited height).
-		add_image_size( 'cashier-blog', 600 );
+		add_image_size( 'cashier-blog', 4 );
 
 		// Add stylesheet for the WordPress editor.
 		add_editor_style( '/assets/css/editor-style.css' );
@@ -80,7 +80,10 @@ if ( ! function_exists( 'cashier_setup' ) ) :
 		) );
 
 		// Add support for WooCommerce.
-		add_theme_support( 'woocommerce' );
+		add_theme_support( 'woocommerce', array(
+			'thumbnail_image_width' => 432,
+			'single_image_width'    => 560,
+		) );
 		add_theme_support( 'wc-product-gallery-zoom' );
 		add_theme_support( 'wc-product-gallery-lightbox' );
 		add_theme_support( 'wc-product-gallery-slider' );
@@ -173,9 +176,8 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 /**
- * Load Jetpack compatibility file.
+ * Load Hero Widget.
  */
-require get_template_directory() . '/widgets/products-by-cat.php';
 require get_template_directory() . '/widgets/hero.php';
 
 /**
@@ -183,4 +185,5 @@ require get_template_directory() . '/widgets/hero.php';
  */
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/woocommerce/functions.php';
+	require get_template_directory() . '/widgets/products-by-cat.php';
 }

@@ -3,7 +3,7 @@ Theme Name: Cashier
 Theme URI: https://dannycooper.com/cashier-theme
 Author: DannyCooper
 Author URI: https://olympusthemes.com/
-Description: Cashier is a lightweight WooCommerce theme built using core WordPress functions. It doesn't use any frameworks or libraries, this makes it fast, simple and easy to customize! Cashier can be used as-is, or it can be used as a WooCommerce Starter Theme to build something greater. The theme is responsive, retina optimized, SEO friendly, and child theme friendly.
+Description: Cashier is a lightweight WooCommerce theme built using core WordPress functions. It doesn't use any frameworks or libraries, this makes it fast, simple and easy to customize! Cashier can be used as-is, or it can be used as a WooCommerce Starter Theme to build something greater. The theme is responsive, Search Engine Optimized (SEO), and child theme friendly.
 Version: 1.0.3
 License: GNU General Public License v2 or later
 Text Domain: cashier
@@ -853,7 +853,7 @@ a:active {
 
 .content-area {
 	float: left;
-	width: 600px;
+	width: 640px;
 }
 
 .entry-header {
@@ -898,13 +898,10 @@ a:active {
 .entry-footer span {
 	display: block;
 }
+
 .entry-footer a {
 	text-decoration: none;
 	color: #303135;
-}
-
-.comments-closed .entry-footer {
-	margin-bottom: 0;
 }
 
 .more-link {
@@ -1244,6 +1241,9 @@ object {
 }
 .page-template-home .site-header {
 	margin-bottom: 0;
+}
+.page-template-home.has-header-image .site-header {
+	margin-bottom: 50px;
 }
 .page-template-home .site-header .wrapper {
 	border-bottom: 0;
@@ -2042,8 +2042,8 @@ p.stars.selected a.active ~ a:before {
 
 
 	.products li.product {
-    width: 47.5%;
-    margin-right: 5%;
+	    width: 47.5%;
+	    margin-right: 5%;
 		margin-bottom: 25px
 	}
 
@@ -2058,13 +2058,13 @@ p.stars.selected a.active ~ a:before {
 
 	#customer_details,
 	.woocommerce-checkout-review-order {
-    float: none;
-    width: 100%;
+	    float: none;
+	    width: 100%;
 	}
 
 	.cart_totals {
 		float: none;
-    width: 100%;
+    	width: 100%;
 	}
 }
 
@@ -2092,7 +2092,6 @@ p.stars.selected a.active ~ a:before {
 	.menu-1 a {
 		border-top: 1px solid #dadada;
 		rgba(255, 255, 255, 0.8);
-
 	}
 
 	.menu-2 {
@@ -2130,18 +2129,21 @@ p.stars.selected a.active ~ a:before {
 		background-color: #2a4d75;
 		display: block;
 	}
+
 	/* Small menu. */
 	.menu-2 .menu-toggle {
 		background-color: #203e63;
 		display: block;
 	}
+
 	.menu-1.toggled #site-menu {
 		display: block;
-    background-color: #eaeaea;
+    	background-color: #eaeaea;
 	}
+
 	.menu-2.toggled #above-header-menu {
 		display: block;
-    background-color: #2a4d75;
+    	background-color: #2a4d75;
 	}
 
 	.menu-1 li,
@@ -2149,6 +2151,7 @@ p.stars.selected a.active ~ a:before {
 		float: none;
 		width: 100%;
 	}
+
 	.menu-1 li:hover {
 		background-color: #dadada
 	}
@@ -2189,16 +2192,16 @@ p.stars.selected a.active ~ a:before {
 	}
 
 	.single-product .product .woocommerce-product-gallery {
-    width: 100%;
-    margin-bottom: 25px;
-    float: none;
+	    width: 100%;
+	    margin-bottom: 25px;
+	    float: none;
 	}
 
 	.single-product .product .summary,
 	.woocommerce-tabs .panel,
 	.woocommerce-tabs .tabs {
-    float: none;
-    width: 100%;
+	    float: none;
+	    width: 100%;
 	}
 
 }

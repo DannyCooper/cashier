@@ -26,8 +26,8 @@ function cashier_body_classes( $classes ) {
 		$classes[] = 'hfeed';
 	}
 
-	if ( ! is_post_type_archive() && ! comments_open() ) {
-		$classes[] = 'comments-closed';
+	if ( has_header_image() ) {
+		$classes[] = 'has-header-image';
 	}
 
 	return $classes;
