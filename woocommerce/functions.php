@@ -79,3 +79,7 @@ if ( ! function_exists( 'cashier_loop_columns' ) ) :
 	}
 endif;
 add_filter( 'loop_shop_columns', 'cashier_loop_columns' );
+
+// Remove cross-sells at cart.
+remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );

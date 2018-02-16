@@ -36,10 +36,16 @@ class Cashier_Hero_Widget extends WP_Widget {
 	 * Enqueue the scripts and styles needed for the image uploader.
 	 */
 	public function enqueue() {
-		wp_enqueue_style( 'thickbox' );
-		wp_enqueue_script( 'media-upload' );
-		wp_enqueue_script( 'thickbox' );
-		wp_enqueue_script( 'cashier-widget-uploader', get_template_directory_uri() . '/assets/js/widget-uploader.js', null, null, true );
+		wp_enqueue_media();
+
+		wp_enqueue_script( 'maillard-upload-media-widget', get_template_directory_uri() . '/assets/js/widget-uploader.js', array( 'jquery' ) );
+
+		// Localize the script with new data.
+		$translation_array = array(
+			'title'       => esc_html__( 'Select image', 'cashier' ),
+			'button_text' => esc_html__( 'Use this image', 'cashier' ),
+		);
+		wp_localize_script( 'maillard-upload-media-widget', 'cashier_widget_translations', $translation_array );
 	}
 
 	/**
@@ -99,6 +105,8 @@ class Cashier_Hero_Widget extends WP_Widget {
 		$url       = ! empty( $instance['url'] ) ? $instance['url'] : '';
 		?>
 
+		<style> img {max-width: 100%} </style>
+
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
 				<?php esc_html_e( 'Title:', 'cashier' ); ?>
@@ -107,13 +115,23 @@ class Cashier_Hero_Widget extends WP_Widget {
 		</p>
 
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'image_url' ) ); ?>">
-				<?php esc_html_e( 'Image:', 'cashier' ); ?>
-			</label>
-			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'image_url' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'image_url' ) ); ?>" type="text" value="<?php echo esc_url( $image_url ); ?>" />
-			<button class="upload_image_button button button-primary">
-				<?php esc_attr_e( 'Upload Image', 'cashier' ); ?>
-			</button>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'image_url' ) ); ?>"><?php esc_attr_e( 'Image:', 'cashier' ); ?></label>
+				<div class="cashier-media-container">
+						<div class="cashier-media-inner">
+							<?php $img_style = ( '' !== $image_url ) ? '' : 'style="display:none"'; ?>
+							<img id="<?php echo esc_attr( $this->get_field_id( 'image_url' ) ); ?>-preview" src="<?php echo esc_attr( $image_url ); ?>" <?php $img_style; ?> />
+							<?php $no_img_style = ( '' !== $image_url ) ? 'style="display:none;"' : ''; ?>
+							<span class="cashier-no-image" id="<?php echo esc_attr( $this->get_field_id( 'image_url' ) ); ?>-noimg" <?php echo $no_img_style; ?>><?php esc_attr_e( 'No image selected', 'cashier' ); ?></span>
+						</div>
+
+				<input type="text" id="<?php echo esc_attr( $this->get_field_id( 'image_url' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'image_url' ) ); ?>" value="<?php echo esc_url( $image_url ); ?>" class="cashier-media-url" />
+
+				<input type="button" value="<?php echo esc_attr_e( 'Remove', 'cashier' ); ?>" class="button cashier-media-remove" id="<?php echo esc_attr( $this->get_field_id( 'image_url' ) ); ?>-remove" <?php echo esc_attr( $img_style ); ?> />
+
+				<?php $button_text = ( '' !== $image_url ) ? esc_attr__( 'Change Image', 'cashier' ) : esc_attr__( 'Select Image', 'cashier' ); ?>
+				<input type="button" value="<?php echo esc_attr( $button_text ); ?>" class="button cashier-media-upload" id="<?php echo esc_attr( $this->get_field_id( 'image_url' ) ); ?>-button" />
+				<br class="clear">
+				</div>
 		</p>
 
 		<p>

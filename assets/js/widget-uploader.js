@@ -6,34 +6,62 @@
  * @license    http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
-jQuery(document).ready(function ($) {
+ jQuery( document ).ready( function() {
 
-   $(document).on("click", ".upload_image_button", function (e) {
-      e.preventDefault();
-      var $button = $(this);
+     // Upload / Change Image
+     function cashier_image_upload( button_class ) {
 
-      // Create the media frame.
-      var file_frame = wp.media.frames.file_frame = wp.media({
-         title: 'Select or upload image',
-         library: { // remove these to show all
-            type: 'image' // specific mime
-         },
-         button: {
-            text: 'Select'
-         },
-         multiple: false  // Set to true to allow multiple files to be selected
-      });
+         var _custom_media = true,
+             _orig_send_attachment = wp.media.editor.send.attachment;
 
-      // When an image is selected, run a callback.
-      file_frame.on('select', function () {
-         // We set multiple to false so only get one image from the uploader
-         var attachment = file_frame.state().get('selection').first().toJSON();
+         jQuery( 'body' ).on( 'click', button_class, function(e) {
 
-         $button.siblings('input').val(attachment.url);
+             var button_id           = '#' + jQuery( this ).attr( 'id' ),
+                 self                = jQuery( button_id),
+                 send_attachment_bkp = wp.media.editor.send.attachment,
+                 button              = jQuery( button_id ),
+                 id                  = button.attr( 'id' ).replace( '-button', '' );
 
-      });
+             _custom_media = true;
 
-      // Finally, open the modal
-      file_frame.open();
-   });
-});
+             wp.media.editor.send.attachment = function( props, attachment ){
+
+                 if ( _custom_media ) {
+
+                     jQuery( '#' + id + '-preview'  ).attr( 'src', attachment.url ).css( 'display', 'block' );
+                     jQuery( '#' + id + '-remove'  ).css( 'display', 'inline-block' );
+                     jQuery( '#' + id + '-noimg' ).css( 'display', 'none' );
+                     jQuery( '#' + id ).val( attachment.url ).trigger( 'change' );
+
+                 } else {
+
+                     return _orig_send_attachment.apply( button_id, [props, attachment] );
+
+                 }
+             }
+
+             wp.media.editor.open( button );
+
+             return false;
+         });
+     }
+     cashier_image_upload( '.cashier-media-upload' );
+
+     // Remove Image
+     function cashier_image_remove( button_class ) {
+
+         jQuery( 'body' ).on( 'click', button_class, function(e) {
+
+             var button              = jQuery( this ),
+                 id                  = button.attr( 'id' ).replace( '-remove', '' );
+
+             jQuery( '#' + id + '-preview' ).css( 'display', 'none' );
+             jQuery( '#' + id + '-noimg' ).css( 'display', 'block' );
+             button.css( 'display', 'none' );
+             jQuery( '#' + id ).val( '' ).trigger( 'change' );
+
+         });
+     }
+     cashier_image_remove( '.cashier-media-remove' );
+
+ });

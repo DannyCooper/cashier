@@ -126,7 +126,7 @@ class Cashier_Products_By_Cat_Widget extends WP_Widget {
 			<label for="<?php echo esc_attr( $this->get_field_id( 'category' ) ); ?>"><?php esc_html_e( 'Product Category:', 'cashier' ); ?></label>
 			<select id="<?php echo esc_attr( $this->get_field_id( 'category' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'category' ) ); ?>" class="widefat" style="width:100%;">
 				<?php foreach ( get_terms( 'product_cat' ) as $term ) : ?>
-					<option <?php selected( $instance['category'], $term->term_id ); ?> value="<?php echo absint( $term->term_id ); ?>"><?php echo esc_attr( $term->name ); ?></option>
+					<option <?php selected( $category, $term->term_id ); ?> value="<?php echo absint( $term->term_id ); ?>"><?php echo esc_attr( $term->name ); ?></option>
 				<?php endforeach; ?>
 			</select>
 		</p>
