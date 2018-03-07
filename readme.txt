@@ -5,7 +5,7 @@ Tags: one-column, two-columns, right-sidebar, custom-background, custom-header, 
 
 Requires at least: 4.0
 Tested up to: 4.9
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,10 +32,15 @@ The clean, fast, standards-compliant code makes this theme very SEO-friendly.
 
 = Does this theme support any plugins? =
 
-Cashier includes support for Infinite Scroll in Jetpack.
+Cashier includes support for WooCommerce.
 
 == Changelog ==
 
+= 1.0.5 - March 7 2018 =
+* Improve widget image uploader
+* Improve 'Homepage Template' blank slate
+* Remove cross sells
+* Update links
 = 1.0.4 - February 9 2018 =
 * Improve support for using a custom header image
 = 1.0.3 - February 8 2018 =

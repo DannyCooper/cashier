@@ -66,6 +66,7 @@ if ( ! function_exists( 'cashier_setup' ) ) :
 
 		// Add image size for blog posts, 640px wide (and unlimited height).
 		add_image_size( 'cashier-blog', 640 );
+		add_image_size( 'cashier-full-width', 1040 );
 
 		// Add stylesheet for the WordPress editor.
 		add_editor_style( '/assets/css/editor-style.css' );
